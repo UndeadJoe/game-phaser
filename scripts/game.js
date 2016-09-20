@@ -40,6 +40,9 @@ PhaserGame.prototype = {
         this.car.anchor.set(0.5,0.5);
 
         this.plot();
+
+        this.client = new Client(this);
+        this.client.create();
     },
 
     plot: function () {
