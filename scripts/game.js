@@ -102,8 +102,6 @@ PhaserGame.prototype = {
                 this.game.camera.y += this.game.origDragPoint.y - this.game.input.activePointer.position.y;
             }	// set new drag origin to current position
             this.game.origDragPoint = this.game.input.activePointer.position.clone();
-
-            this.plot();
         }
         else {
             this.game.origDragPoint = null;
