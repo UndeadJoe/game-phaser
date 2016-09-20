@@ -1,14 +1,17 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game-screen');
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game-screen');
 
 var PhaserGame = function () {
     this.car = null;
     this.road = null;
+
     this.path = [];
     this.pi = 0;
 
+    this.cursors = null;
+
     this.mode = 2;
     this.points = {
-        'x': [ 32, 128, 256, 384, 512, 608 ],
+        'x': [ 0, 228, 456, 684, 752, 1000 ],
         'y': [ 240, 240, 240, 240, 240, 240 ]
     };
 };
@@ -16,6 +19,7 @@ var PhaserGame = function () {
 PhaserGame.prototype = {
     init: function () {
         this.stage.backgroundColor = '#204090';
+        game.world.setBounds(0, 0, 1000, 1000);
     },
 
     preload: function () {
@@ -23,12 +27,12 @@ PhaserGame.prototype = {
     },
 
     create: function () {
-        this.road = this.add.bitmapData(this.game.width, this.game.height);
+        this.road = this.add.bitmapData(this.world.width, this.world.height);
         this.road.addToWorld();
         var py = this.points.y;
         for (var i = 0; i < py.length; i++)
         {
-            py[i] = this.rnd.between(32, 432);
+            py[i] = this.rnd.between(32, 900);
         }
 
         this.car = game.add.sprite(0, 0, 'car');
@@ -91,6 +95,23 @@ PhaserGame.prototype = {
         {
             this.pi = 0;
         }
+
+        if (this.game.input.activePointer.isDown) {
+            if (this.game.origDragPoint) {		// move the camera by the amount the mouse has moved since last update
+                this.game.camera.x += this.game.origDragPoint.x - this.game.input.activePointer.position.x;
+                this.game.camera.y += this.game.origDragPoint.y - this.game.input.activePointer.position.y;
+            }	// set new drag origin to current position
+            this.game.origDragPoint = this.game.input.activePointer.position.clone();
+
+            this.plot();
+        }
+        else {
+            this.game.origDragPoint = null;
+        }
+    },
+
+    render: function () {
+        game.debug.cameraInfo(game.camera, 32, 32);
     }
 };
 
