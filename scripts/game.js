@@ -6,7 +6,7 @@ var PhaserGame = function () {
     this.path = [];
     this.pi = 0;
 
-    this.mode = 1;
+    this.mode = 2;
     this.points = {
         'x': [ 32, 128, 256, 384, 512, 608 ],
         'y': [ 240, 240, 240, 240, 240, 240 ]
@@ -23,10 +23,6 @@ PhaserGame.prototype = {
     },
 
     create: function () {
-        this.car = game.add.sprite(0, 0, 'car');
-        this.car.scale.set(0.5);
-        this.car.anchor.set(0.5,0.5);
-
         this.road = this.add.bitmapData(this.game.width, this.game.height);
         this.road.addToWorld();
         var py = this.points.y;
@@ -34,13 +30,16 @@ PhaserGame.prototype = {
         {
             py[i] = this.rnd.between(32, 432);
         }
-        console.log(this.points.y);
+
+        this.car = game.add.sprite(0, 0, 'car');
+        this.car.scale.set(0.5);
+        this.car.anchor.set(0.5,0.5);
 
         this.plot();
     },
 
     plot: function () {
-        var x = 1 / (game.width/3);
+        var x = 1 / (game.width/2);
         var px, py;
         var ix = 0;
 
@@ -74,11 +73,11 @@ PhaserGame.prototype = {
             this.path.push(node);
             ix++;
 
-            this.road.rect(px, py, 1, 1, 'rgba(255, 255, 255, 1)');
+            this.road.rect(px, py, 1, 1, 'rgba(255, 255, 255, 1)'); // Путь
         }
         for (var p = 0; p < this.points.x.length; p++)
         {
-            this.road.rect(this.points.x[p]-3, this.points.y[p]-3, 6, 6, 'rgba(255, 0, 0, 1)');
+            this.road.rect(this.points.x[p]-3, this.points.y[p]-3, 6, 6, 'rgba(255, 0, 0, 1)'); // опорные точки
         }
     },
 

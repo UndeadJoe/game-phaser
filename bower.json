@@ -1,0 +1,13 @@
+{
+  "name": "game-phaser",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "Maksim Mamaev"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/UndeadJoe/game-phaser",
+  "dependencies": {
+    "phaser": "^2.6.2"
+  }
+}

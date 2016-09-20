@@ -1,0 +1,23 @@
+{
+  "name": "game-phaser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "dependencies": {
+    "bower": "^1.7.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UndeadJoe/game-phaser.git"
+  },
+  "author": "Maksim Mamaev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UndeadJoe/game-phaser/issues"
+  },
+  "homepage": "https://github.com/UndeadJoe/game-phaser#readme"
+}
