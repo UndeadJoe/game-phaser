@@ -8,6 +8,7 @@
   "license": "ISC",
   "homepage": "https://github.com/UndeadJoe/game-phaser",
   "dependencies": {
-    "phaser": "^2.6.2"
+    "phaser": "^2.6.2",
+    "socket.io-client": "^1.4.8"
   }
 }
