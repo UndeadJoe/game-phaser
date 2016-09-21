@@ -12,7 +12,8 @@ Client.prototype = {
         var style = { font: "18px Arial", fill: "#ff0044", align: "center" };
         var t = this.game.game.add.text(430, 330, text, style);
 
-        this.socket = io.connect('http://localhost:3000');
+        //this.socket = io.connect('http://localhost:3000');
+        this.socket = io.connect('https://game-backend-undeadjoe.c9users.io:8080');
         var socket = this.socket;
         var socketID = null;
         var path = null;
