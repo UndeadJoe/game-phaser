@@ -13,16 +13,18 @@ Client.prototype = {
         var t = this.game.game.add.text(430, 330, text, style);
 
         this.socket = io.connect('http://localhost:3000');
-        var game = this.game;
         var socket = this.socket;
         var socketID = null;
         var path = null;
+        var game = this.game;
 
         this.socket.on('playerConnected', function(data){
             socketID = data.id;
             path = data.path;
 
             console.log(path);
+            game.points = path;
+            game.plot();
         });
 
     }
