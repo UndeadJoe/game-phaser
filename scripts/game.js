@@ -22,6 +22,7 @@
 
         preload: function () {
             this.load.image('car', 'assets/simple_car.svg');
+            this.load.image('button', 'assets/spacebar.png');
         },
 
         create: function () {
@@ -36,6 +37,8 @@
             this.client.create();
 
             this.plot();
+
+            var button = this.game.add.button(this.game.world.centerX - 95, 400, 'button', this.updateMap, this);
         },
 
         plot: function () {
@@ -114,8 +117,14 @@
 
         render: function () {
             this.game.debug.cameraInfo(this.game.camera, 32, 32);
+        },
+
+        updateMap: function () {
+            this.client.update();
         }
     };
+
+
 
     window['phaser'] = window['phaser'] || {};
     window['phaser'].Game = Game;

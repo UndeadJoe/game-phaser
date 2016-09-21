@@ -22,10 +22,20 @@ Client.prototype = {
             socketID = data.id;
             path = data.path;
 
-            console.log(path);
             game.points = path;
             game.plot();
         });
 
+        this.socket.on('updateMap', function(data){
+            path = data.path;
+
+            console.log(path);
+            game.points = path;
+            game.plot();
+        });
+    },
+    
+    update: function() {
+        this.socket.emit('needMap');
     }
 };
