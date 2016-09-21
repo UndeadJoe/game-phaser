@@ -21,8 +21,13 @@ gulp.task('assets', function() {
         .pipe(gulp.dest(destination + '/assets'))
 });
 
+gulp.task('maps', function() {
+    return gulp.src(source + '/components/phaser/build/phaser.map')
+        .pipe(gulp.dest(destination + '/js/vendor'))
+});
+
 gulp.task('build', function (callback){
-    runSequence('clean:dist', ['useref', 'assets'], callback);
+    runSequence('clean:dist', ['useref', 'assets', 'maps'], callback);
     console.log('Building files to "' + destination + '"...');
 });
 
