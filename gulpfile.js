@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     del = require('del'),
-    useref = require('gulp-useref');
+    useref = require('gulp-useref'),
+    runSequence = require('run-sequence');
 
 var source = "app";
 var destination = "dist";
@@ -20,8 +21,9 @@ gulp.task('assets', function() {
         .pipe(gulp.dest(destination + '/assets'))
 });
 
-gulp.task('build', ['clean:dist', 'useref', 'assets'], function (){
-    console.log('Building files to "' + destination + '" complete');
+gulp.task('build', function (callback){
+    runSequence('clean:dist', ['useref', 'assets'], callback);
+    console.log('Building files to "' + destination + '"...');
 });
 
 gulp.task('default', function() {
