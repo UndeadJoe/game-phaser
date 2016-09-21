@@ -43,6 +43,7 @@ atlassian-ide-plugin.xml
 
 node_modules/
 bower_components/
+app/components/
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
