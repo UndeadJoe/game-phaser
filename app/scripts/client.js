@@ -30,7 +30,6 @@ Client.prototype = {
         this.socket.on('updateMap', function(data){
             path = data.path;
 
-            console.log(path);
             game.points = path;
             game.plot();
         });

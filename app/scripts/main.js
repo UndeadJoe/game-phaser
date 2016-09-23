@@ -3,8 +3,13 @@ window.onload = function () {
 
     var game;
     var ns = window['phaser'];
+    var config = {
+        renderer: Phaser.CANVAS,
+        width: 800,
+        height: 700,
+        parent: 'game-screen' };
 
-    game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game-screen');
+    game = new Phaser.Game(config);
     //game.state.add('boot', ns.Boot);
     game.state.add('preloader', ns.Game.preload);
     //game.state.add('menu', ns.Menu);

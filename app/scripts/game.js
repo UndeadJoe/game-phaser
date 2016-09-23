@@ -23,6 +23,8 @@
         preload: function () {
             this.load.image('car', 'assets/simple_car.svg');
             this.load.image('button', 'assets/spacebar.png');
+
+            this.stage.disableVisibilityChange = true;
         },
 
         create: function () {
@@ -123,8 +125,6 @@
             this.client.update();
         }
     };
-
-
 
     window['phaser'] = window['phaser'] || {};
     window['phaser'].Game = Game;
